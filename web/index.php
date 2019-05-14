@@ -1,6 +1,6 @@
 <html>
     <head>
-    
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/all.css"/>
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="bootstrap/css/mdb.min.css"/>
         <link rel="stylesheet" type="text/css" href="bootstrap/css/fontawesome.css"/>
@@ -9,11 +9,7 @@
         <script src="bootstrap/js/bootstrap.js"></script>
     </head>
     <body>
-        <header>
-            
-        </header>
         <div class="container">
-            <!-- Section: Features v.2 -->
             <section class="my-5">
 
             <!-- Section heading -->
@@ -88,7 +84,7 @@
 
                 <!-- Grid column -->
                 <div class="col-lg-2 col-md-3 col-2">
-                    <!-- <i class="fas fa-tachometer-alt purple-text fa-2x"></i> -->
+                    <!-- <i class="fas fa-tachometer-alt purple-text fa-2x"></i> to be fixed :)--> 
                 </div>
                 <!-- Grid column -->
 
@@ -111,7 +107,6 @@
             <!-- Grid row -->
 
             </section>
-            <!-- Section: Features v.2 -->
         </div>
     </body>
 </html>
