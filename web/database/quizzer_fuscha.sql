@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2019 at 10:48 AM
+-- Generation Time: May 15, 2019 at 01:12 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -39,7 +39,9 @@ CREATE TABLE `answer` (
 --
 
 INSERT INTO `answer` (`id`, `question_id`, `answer`) VALUES
-(1, 1, 'Cascading Style Sheet');
+(1, 1, 'Cascading Style Sheet'),
+(2, 2, 'Hypertext Markup Language'),
+(3, 3, 'Extensible Markup Language');
 
 -- --------------------------------------------------------
 
@@ -62,7 +64,9 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`id`, `enumeration`, `mutipleChoice`, `trueOrFalse`, `question`, `essay`, `points`) VALUES
-(1, b'0', b'0', b'0', 'What does CSS Stand for?', b'1', 500);
+(1, b'0', b'0', b'0', 'What does CSS Stand for?', b'1', 500),
+(2, b'0', b'1', b'0', 'What does HTML stand for?', b'0', 5),
+(3, b'0', b'0', b'0', 'What does XML stand for?', b'1', 5);
 
 -- --------------------------------------------------------
 
@@ -119,13 +123,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
