@@ -1,5 +1,8 @@
 <?php
     include_once 'includes/dbConnect.php';
+    $query = "select a.essay,a.enumeration,a.mutipleChoice,a.trueOrFalse,a.question,a.points,b.answer from questions a join answer b on a.id = b.question_id;";
+    $result = mysqli_query($connect,$query);
+    $fetched_result = mysqli_num_rows($result);
 ?>
 
 <!DOCTYPE html>
@@ -67,25 +70,23 @@
                     <div class="modal-content">
                         <div class="modal-header">
                                 
-                        <?php 
-                            $query = "select a.essay,a.enumeration,a.mutipleChoice,a.trueOrFalse,a.question,a.points,b.answer from questions a join answer b on a.id = b.question_id;";
-                            $result = mysqli_query($connect,$query);
-                            $fetched_result = mysqli_num_rows($result);
+                        <?php   
                             $counter = 0;
                             if($fetched_result > 0){
                                 while ($row = mysqli_fetch_assoc($result)){
                                     $counter++;
                                     $essay = $row['essay'];
                                     $multi = $row['mutipleChoice'];
-                                    if($essay == '1'){
-                                        //echo $row['question'];
-                                        echo '<p class="heading lead">Question #1</p>
+                                        echo '<p class="heading lead">Question #'.$counter.'</p>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true" class="white-text">×</span>
                                         </button>
                                         </div>
                                         <div class="modal-body">
-                                        <div class="text-center">
+                                        <div class="text-center">';
+                                    if($essay == '1'){
+                                        //echo $row['question'];
+                                        echo '
                                         <p>'.$row['question'].'</p>
                                         </div>
                                         <hr>
@@ -93,13 +94,7 @@
                                         <textarea type="text" id="essayAnswer" class="md-textarea form-control" rows="3"></textarea>
                                         </div>';
                                     }else if($multi == '1'){
-                                        echo '<p class="heading lead">Question #1</p>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true" class="white-text">×</span>
-                                        </button>
-                                        </div>
-                                        <div class="modal-body">
-                                        <div class="text-center">
+                                        echo '
                                         <p>'.$row['question'].'</p>
                                         </div>
                                         <hr>
@@ -126,21 +121,27 @@
                                         <div class="form-check mb-4">
                                         <input class="form-check-input" name="group1" type="radio" id="radio-579" value="option5">
                                         <label class="form-check-label" for="radio-579">5</label>
+                                        </div>
                                         </div>';
                                     }else{
                                         echo '<strong>Oh oh!, Something went wrong.</strong>';
-                                    }  
+                                    }
+                                        echo '<div class="modal-footer justify-content-center">';
+                                    if($fetched_result < $counter){
+                                        echo '
+                                        <a type="button" class="btn btn-primary waves-effect waves-light">Next
+                                        <!-- <i class="fa fa-paper-plane ml-1"></i> #icon to be fixed-->
+                                        </a>';
+                                    }else if($fetched_result = $counter){
+                                        echo '<a type="button" class="btn btn-primary waves-effect waves-light">Submit
+                                        <!-- <i class="fa fa-paper-plane ml-1"></i> #icon to be fixed-->
+                                        </a>';
+                                    }
+                                        echo '<a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
+                                        </div>';  
                                 }
                             } 
-                        ?>
-                        </div>
-                            <!--Footer-->
-                        <div class="modal-footer justify-content-center">
-                            <a type="button" class="btn btn-primary waves-effect waves-light">Next
-                            <!-- <i class="fa fa-paper-plane ml-1"></i> #icon to be fixed-->
-                            </a>
-                            <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
-                        </div>
+                        ?>   
                     </div>
                 </div>
             </div>
