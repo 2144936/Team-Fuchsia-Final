@@ -1,3 +1,8 @@
+<?php
+    include_once 'includes/dbConnect.php';
+?>
+
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="bootstrap/css/all.css"/>
@@ -9,6 +14,7 @@
         <script src="bootstrap/js/bootstrap.js"></script>
     </head>
     <body>
+
         <div class="container">
             <section class="my-5">
 
@@ -18,95 +24,126 @@
             <p class="lead grey-text text-center w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur
             adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
             veniam.</p>
-
-            <!-- Grid row -->
             <div class="row">
-
-            <!-- Grid column -->
             <div class="col-md-4 mb-md-0 mb-5">
-
-                <!-- Grid row -->
                 <div class="row">
-
-                <!-- Grid column -->
                 <div class="col-lg-2 col-md-3 col-2">
                     <!-- <i class="fas fa-bullhorn blue-text fa-2x"></i> -->
                 </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
                 <div class="col-lg-10 col-md-9 col-10">
                 <button type="button" class="btn btn-blue-grey font-weight-bold">Lessons</button>
                     <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-
                 </div>
-                <!-- Grid column -->
-
                 </div>
-                <!-- Grid row -->
-
             </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
             <div class="col-md-4 mb-md-0 mb-5">
-
-                <!-- Grid row -->
                 <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-lg-2 col-md-3 col-2">
-                   <!-- <i class="fas fa-cogs pink-text fa-2x"></i> -->
+                    <div class="col-lg-2 col-md-3 col-2">
+                    </div>
+                    <div class="col-lg-10 col-md-9 col-10">
+                        <button type="button" class="btn btn-brown font-weight-bold" data-toggle="modal" data-target="#quiz">Take the Quiz</button>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    </div>
                 </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-lg-10 col-md-9 col-10">
-                    <button type="button" class="btn btn-brown font-weight-bold">Take the Quiz</button>
-                    <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-
-                </div>
-                <!-- Grid column -->
-
-                </div>
-                <!-- Grid row -->
-
             </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
             <div class="col-md-4">
-
-                <!-- Grid row -->
                 <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-lg-2 col-md-3 col-2">
-                    <!-- <i class="fas fa-tachometer-alt purple-text fa-2x"></i> to be fixed :)--> 
+                    <div class="col-lg-2 col-md-3 col-2">
+                    </div>
+                    <div class="col-lg-10 col-md-9 col-10">
+                        <button type="button" class="btn btn-mdb-color font-weight-bold">About Us</button>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    </div>
                 </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-lg-10 col-md-9 col-10">
-                    <button type="button" class="btn btn-mdb-color font-weight-bold">About Us</button>
-                    <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                    
-                </div>
-                <!-- Grid column -->
-
-                </div>
-                <!-- Grid row -->
-
             </div>
-            <!-- Grid column -->
-
             </div>
-            <!-- Grid row -->
-
             </section>
+            <div class="modal fade right" id="quiz" tabindex="-1" role="dialog" aria-labelledby="quizModalLabel"
+                aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-notify modal-info" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                                
+                        <?php 
+                            $query = "select a.essay,a.enumeration,a.mutipleChoice,a.trueOrFalse,a.question,a.points,b.answer from questions a join answer b on a.id = b.question_id;";
+                            $result = mysqli_query($connect,$query);
+                            $fetched_result = mysqli_num_rows($result);
+                            $counter = 0;
+                            if($fetched_result > 0){
+                                while ($row = mysqli_fetch_assoc($result)){
+                                    $counter++;
+                                    $essay = $row['essay'];
+                                    $multi = $row['mutipleChoice'];
+                                    if($essay == '1'){
+                                        //echo $row['question'];
+                                        echo '<p class="heading lead">Question #1</p>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" class="white-text">×</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <div class="text-center">
+                                        <p>'.$row['question'].'</p>
+                                        </div>
+                                        <hr>
+                                        <div class="md-form">
+                                        <textarea type="text" id="essayAnswer" class="md-textarea form-control" rows="3"></textarea>
+                                        </div>';
+                                    }else if($multi == '1'){
+                                        echo '<p class="heading lead">Question #1</p>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" class="white-text">×</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <div class="text-center">
+                                        <p>'.$row['question'].'</p>
+                                        </div>
+                                        <hr>
+                                        <!-- Choices -->
+                                        <p class="text-center">
+                                        <strong>Choices: </strong>
+                                        </p>
+                                        <div class="form-check mb-4">
+                                        <input class="form-check-input" name="group1" type="radio" id="radio-179" value="option1" checked>
+                                        <label class="form-check-label" for="radio-179">1</label>
+                                        </div>
+                                        <div class="form-check mb-4">
+                                        <input class="form-check-input" name="group1" type="radio" id="radio-279" value="option2">
+                                        <label class="form-check-label" for="radio-279">2</label>
+                                        </div>
+                                        <div class="form-check mb-4">
+                                        <input class="form-check-input" name="group1" type="radio" id="radio-379" value="option3">
+                                        <label class="form-check-label" for="radio-379">3</label>
+                                        </div>
+                                        <div class="form-check mb-4">
+                                        <input class="form-check-input" name="group1" type="radio" id="radio-479" value="option4">
+                                        <label class="form-check-label" for="radio-479">4</label>
+                                        </div>
+                                        <div class="form-check mb-4">
+                                        <input class="form-check-input" name="group1" type="radio" id="radio-579" value="option5">
+                                        <label class="form-check-label" for="radio-579">5</label>
+                                        </div>';
+                                    }else{
+                                        echo '<strong>Oh oh!, Something went wrong.</strong>';
+                                    }  
+                                }
+                            } 
+                        ?>
+                        </div>
+                            <!--Footer-->
+                        <div class="modal-footer justify-content-center">
+                            <a type="button" class="btn btn-primary waves-effect waves-light">Next
+                            <!-- <i class="fa fa-paper-plane ml-1"></i> #icon to be fixed-->
+                            </a>
+                            <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
