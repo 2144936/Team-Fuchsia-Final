@@ -1,0 +1,207 @@
+CSS:
+1. What CSS stands for?
+ a. Cassette style sheet
+ b. Cascading Style Sheet
+ c. Casting stile Shoot
+ d. All of the above
+
+ anser: b
+
+2. Who developed the CSS?
+ a. Berner Turners
+ b. Hakon Wium Lie
+ c. Bert Bos
+ d. Both b and c
+
+ answer: d
+
+3. When such rules target different properties, they conflict, and must be resolved such that only one style is applied. When the styles involve the same property they affects cascade.
+ a. First sentence is true but second is false.
+ b. Both False.
+ c. Both True
+ d. First sentence is false but second is true
+
+ answer: b.
+
+4. its generates CSS using a custom language syntax that typically includes features that don't exist in pure CSS.
+ a. CSS framework
+ b. Polyrills
+ c. CSS Preprocessors
+ d. None of the above
+
+ answer: c.
+
+5. What is the other name of Rules Sets?
+ a. Style rules
+ b. CSS Rules
+ c. Selector
+ d. Both a and b
+
+ answer: d
+
+6. Chain of one or more sequences of simpe selector separated by combinators.
+ a. Selector
+ b. Selector Syntax
+ c. charset
+ d. CSS Sets
+
+ answer: b
+
+7. what is the symbol of universal selector?
+ a. *
+ b. ;
+ c. >
+ d. None of the above
+
+ answer: a
+
+8. nav#main is example of?
+ a. class selectors
+ b. ID selectors
+ c. group selectors
+ d. type selectors
+
+ answer: b
+
+9. it provides predefined CSS design functionality that can be reused, extended, or customized.
+ a. polyfills
+ b. CSS Preprocessors
+ c. CSS Framework
+ d. CSS Rules
+
+ answer: c
+
+10. What is the other name of external stylesheet?
+ a. internal
+ b. embedded
+ c. linked
+ d. plain
+
+ answer: c
+
+11. What is the other name of embedded stylesheet?
+ a. inline stylesheet
+ b. external stylesheet
+ c. plain
+ d. internal
+
+ answer: d
+
+12. What is symbol of child combinator?
+ a. *
+ b. :
+ c. <
+ d. >
+
+ answer: d
+
+13. Adjacent sibling combinator and general sibling combinator is ________.
+ a. pseudo elements
+ b. sibling combinators
+ c. combinators
+ d. attribute selector
+
+ answer: b
+
+14. + is symbolize of?
+ a. first element
+ b. child combinator
+ c. general sibling combinator
+ d. adjacent sibling combinator.
+
+ answer: d
+
+15. provides features that developers expect browsers to provide natively.
+ a. CSS framework
+ b. CSS preprocessor
+ c. Polyfills
+ d. All of the above
+
+ answer: c
+
+16. Modernizr is an example of..
+ a. pseudo elements.
+ b. polyfills
+ c. internal
+ d. None of the above
+
+ answer: b
+
+17. Bootstrap is one example of CSS framework.
+ a. False
+ b. True
+ c. Maybe
+ d. In between
+
+ answer: b
+
+18. integers or reals in decimal notation.
+ a. dimension
+ b. numbers
+ c. keywords
+ d. angle
+
+ answer: b
+
+19. it used in animation. transition and related properties.
+ a. dimension
+ b. keywords
+ c. duration units
+ d. resolution units
+
+ answer: c.
+
+20. used in media queries.
+ a. resolution units
+ b. duration units
+ c. percentages
+ d. dimension
+
+ answer: a
+
+21. length, angle, duration (or time), frequency, resolution
+ a. dimension
+ b. keywords
+ c. duration units
+ d. resolution units
+
+ answer: a
+
+22. initially introduced in CSS2 for the (obsoleted) aural media type;
+reintroduced in CSS3, but is currently unused
+ a. resolution units
+ b. duration units
+ c. percentages
+ d. frequency units
+
+ answer: d
+
+23. calculated as a percentage of some value (usually taken from the parent.
+element)
+ a. resolution units
+ b. duration units
+ c. percentages
+ d. frequency units
+
+ answer: c
+
+24. delimited by single quotes ( ' ) or double quotes ( " ).
+  a. resolution units
+ b. duration units
+ c. percentages
+ d. String
+
+ answer: d
+
+25. HyperText Markup Language (HTML) is language used to specify the presentation of
+structurally marked up documents.
+ a. True
+ b. False
+ c. Maybe
+ d. In between
+
+ answer: b
+
+ JAVASCRIPT:
+
+ 1. 
