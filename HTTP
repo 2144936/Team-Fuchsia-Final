@@ -1,0 +1,28 @@
+HTTP Questions:
+
+1. HTTP stands for ________________________. (answer: Hypertext Transfer Protocol)
+2. ______ is a request and response protocol. (answer: HTTP)
+3. ______ is used to send data in URL. (answer: Get)
+4. ______ transfers status line and header section as a request. (answer: Head)
+5. ______ is used to send data to the server. (answer: Post)
+6. ______ is used to send entire updated data to the server. (answer: Put)
+7. _______ method sends a request to the server to perform delete operation. (answer: Delete)
+8. _________ is used to establish connection to the server. (answer: Connect)
+9. ________ method describes communication options for target resource. (answer: Options)
+10. _______ performs message loop-back test along the path to the target resource. (answer: trace)
+11. _____________ is a Standard response code given by web server on Internet. (answer: Status Code)
+12. ___________ header applies for both request and response message. (answer: General)
+13. ___________ header contains information for the request message. ( answer:Request)
+14. ___________ header is used to contain response header information sent by the web server. (answer: Response)
+15. ___________ header is used to contain more information about the body of the entity. (answer: Entity)
+16. ____ is used to define the identity of something on the web. (answer: URI / Uniform Resource Identifier)
+17. ___________ methods doesn't matter if the request is called one or ten times, the result should be same. (answer: Idempotent)
+18. ________ is a command line tool in HTTP that is available on all major operating system. (answer: cURL)
+19. _____ spoofing is a type of computer attack where user is forced to navigate to fake website to look like real one. (answer: DNS)
+20. ________ is a set of constraints that ensure a scalable, fault-tolerant and easily adaptable system. (answer: REST / Representational State Transfer)
+21. When we use PUT request to create the same resource twice then server displays ____ code to the browser. (answer: 409)
+22. Web Server displays the HTTP _____ error message, when requested method is not allowed. (answer: 405 / Method not allowed).
+23. When processing fails due to some unanticipated incident on the server side, web server displays ____ internal server error. (answer: 500)
+24. HTTP 201 ________________ code indicates that the request was successful. (answer: Created response)
+25. HTTP ________ response code indicates that request is successful. (answer: 200 OK)
+
