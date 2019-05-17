@@ -12,6 +12,7 @@ if(isset($_POST["id"])){
             $counter++;
             $essay = $row['essay'];
             $multi = $row['mutipleChoice'];
+            $tOrf = $row['trueOrFalse'];
                 echo '<div class="modal-header">
                 <p class="heading lead">Question #'.$counter.'</p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -42,7 +43,7 @@ if(isset($_POST["id"])){
                 <label class="form-check-label" for="radio-179">Berner Turners</label>
                 </div>
                 <div class="form-check mb-4">
-                <input class="form-check-input" name="b_choice" type="radio" id="radio-279" value="option2">
+                <input class="form-check-input" name="b_choice" type="radio" id="radio-279" value="'.$row['answer'].'">
                 <label class="form-check-label" for="radio-279">'.$row['answer'].'</label>
                 </div>
                 <div class="form-check mb-4">
@@ -57,8 +58,27 @@ if(isset($_POST["id"])){
                 <input class="form-check-input" name="e_choice" type="radio" id="radio-579" value="option5">
                 <label class="form-check-label" for="radio-579">Bert Bos and Berner Turners</label>
                 </div>
+                </div>';  
+            }else if($tOrf == '1'){
+                echo '<p>'.$row['question'].'</p>
+                </div>
+                <hr>
+                <!-- Choices -->
+                <p class="text-center">
+                <strong>Choices: </strong>
+                </p>
+                <div class="form-check mb-4">
+                <input class="form-check-input" name="a_choice" type="radio" id="radio-179" value="True">
+                <label class="form-check-label" for="radio-179">True</label>
+                </div>
+                <div class="form-check mb-4">
+                <input class="form-check-input" name="b_choice" type="radio" id="radio-279" value="False">
+                <label class="form-check-label" for="radio-279">False</label>
+                </div>
                 </div>';
-            }else{
+
+            }
+            else{
                 echo '<strong>Oh oh!, Something went wrong.</strong>';
             }
             $query_1 = "SELECT id FROM questions WHERE id < '".$_POST['id']."' ORDER BY id DESC LIMIT 1";
