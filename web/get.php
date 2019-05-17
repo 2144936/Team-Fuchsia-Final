@@ -38,24 +38,24 @@ if(isset($_POST["id"])){
                 <strong>Choices: </strong>
                 </p>
                 <div class="form-check mb-4">
-                <input class="form-check-input" name="group1" type="radio" id="radio-179" value="option1" checked>
-                <label class="form-check-label" for="radio-179">1</label>
+                <input class="form-check-input" name="group1" type="radio" id="radio-179" value="option1">
+                <label class="form-check-label" for="radio-179">Berner Turners</label>
                 </div>
                 <div class="form-check mb-4">
                 <input class="form-check-input" name="group1" type="radio" id="radio-279" value="option2">
-                <label class="form-check-label" for="radio-279">2</label>
+                <label class="form-check-label" for="radio-279">Hakon Wium Lie</label>
                 </div>
                 <div class="form-check mb-4">
                 <input class="form-check-input" name="group1" type="radio" id="radio-379" value="option3">
-                <label class="form-check-label" for="radio-379">3</label>
+                <label class="form-check-label" for="radio-379">Hakon Wium Lie and Bert Bos</label>
                 </div>
                 <div class="form-check mb-4">
                 <input class="form-check-input" name="group1" type="radio" id="radio-479" value="option4">
-                <label class="form-check-label" for="radio-479">4</label>
+                <label class="form-check-label" for="radio-479">Hakon Wium Lie and Berner Turners</label>
                 </div>
                 <div class="form-check mb-4">
                 <input class="form-check-input" name="group1" type="radio" id="radio-579" value="option5">
-                <label class="form-check-label" for="radio-579">5</label>
+                <label class="form-check-label" for="radio-579">Bert Bos and Berner Turners</label>
                 </div>
                 </div>';
             }else{
