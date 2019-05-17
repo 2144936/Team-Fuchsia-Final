@@ -26,7 +26,7 @@ if(isset($_POST["id"])){
                 </div>
                 <hr>
                 <div class="md-form">
-                <textarea type="text" id="essayAnswer" class="md-textarea form-control" rows="3"></textarea>
+                <textarea type="text" id="essayAnswer" class="md-textarea form-control" rows="3" name="essayAnswer"></textarea>
                 </div>';
             }else if($multi == '1'){
                 echo '
@@ -38,23 +38,23 @@ if(isset($_POST["id"])){
                 <strong>Choices: </strong>
                 </p>
                 <div class="form-check mb-4">
-                <input class="form-check-input" name="group1" type="radio" id="radio-179" value="option1">
+                <input class="form-check-input" name="a_choice" type="radio" id="radio-179" value="option1">
                 <label class="form-check-label" for="radio-179">Berner Turners</label>
                 </div>
                 <div class="form-check mb-4">
-                <input class="form-check-input" name="group1" type="radio" id="radio-279" value="option2">
-                <label class="form-check-label" for="radio-279">Hakon Wium Lie</label>
+                <input class="form-check-input" name="b_choice" type="radio" id="radio-279" value="option2">
+                <label class="form-check-label" for="radio-279">'.$row['answer'].'</label>
                 </div>
                 <div class="form-check mb-4">
-                <input class="form-check-input" name="group1" type="radio" id="radio-379" value="option3">
+                <input class="form-check-input" name="c_choice" type="radio" id="radio-379" value="option3">
                 <label class="form-check-label" for="radio-379">Hakon Wium Lie and Bert Bos</label>
                 </div>
                 <div class="form-check mb-4">
-                <input class="form-check-input" name="group1" type="radio" id="radio-479" value="option4">
+                <input class="form-check-input" name="d_choice" type="radio" id="radio-479" value="option4">
                 <label class="form-check-label" for="radio-479">Hakon Wium Lie and Berner Turners</label>
                 </div>
                 <div class="form-check mb-4">
-                <input class="form-check-input" name="group1" type="radio" id="radio-579" value="option5">
+                <input class="form-check-input" name="e_choice" type="radio" id="radio-579" value="option5">
                 <label class="form-check-label" for="radio-579">Bert Bos and Berner Turners</label>
                 </div>
                 </div>';
@@ -67,9 +67,13 @@ if(isset($_POST["id"])){
             $query_2 = "SELECT id FROM questions WHERE id > '".$_POST['id']."' ORDER BY id ASC LIMIT 1";
             $result_2 = mysqli_query($connect, $query_2);
             $data_2 = mysqli_fetch_assoc($result_2);
+            $submitChecker = mysqli_num_rows($result_2);
             echo '<div align="center">';
-            echo '<button type="button" name="previous" class="btn btn-primary waves-effect waves-light previous" id="'.$data_1["id"].'">Previous</button>';
-            echo '<button type="button" name="next" class="btn btn-primary waves-effect waves-light next" id="'.$data_2["id"].'">Next</button>';
+            if ($submitChecker != 0){
+                echo '<button type="button" name="next" class="btn btn-primary waves-effect waves-light next" id="'.$data_2["id"].'">Next</button>';
+            }else{
+                echo '<button type="button" name="next" class="btn btn-primary waves-effect waves-light" data-dismiss="modal" ">Submit</button>';
+            }
             echo '<button type="button" name="next" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</button>
              </div>';
         }
