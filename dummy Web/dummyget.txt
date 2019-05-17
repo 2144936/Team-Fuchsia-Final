@@ -1,0 +1,262 @@
+<?php
+    include_once 'includes/dbConnect.php';
+    $query = "select a.id,a.essay,a.enumeration,a.mutipleChoice,a.trueOrFalse,a.question,a.points,b.answer from questions a join answer b on a.id = b.question_id where a.id = '".$_POST["id"]."'";
+    $query2 = "select a.id,a.essay,a.enumeration,a.mutipleChoice,a.trueOrFalse,a.question,a.points,b.answer from questions a join answer b on a.id = b.question_id where a.mutipleChoice = '0' or a.essay = '0'";
+    $query3 = "select a.question,b.answer from questions a join answer b on a.id = b.question_id where a.mutipleChoice = '0' or a.essay = '0'";
+    $result = mysqli_query($connect, $query);
+    $result2 = mysqli_query($connect, $query2);
+    $result3 = mysqli_query($connect, $query3);
+    $totalQ_checker = mysqli_num_rows($result2);
+    $counter = 0;
+    $check = 0;
+if(isset($_POST["id"])){
+    if($totalQ_checker > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $counter++;
+            $essay = $row['essay'];
+            $multi = $row['mutipleChoice'];
+            $tOrf = $row['trueOrFalse'];
+                echo '<div class="modal-header">
+                <p class="heading lead">Question #'.$counter.'</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="white-text">×</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                <div class="text-center">';
+            if($essay == '1'){
+                echo '
+                <p>'.$row['question'].'</p>
+                </div>
+                <hr>
+                <div class="md-form">
+                <textarea type="text" id="essayAnswer" class="md-textarea form-control" rows="3" name="essayAnswer"></textarea>
+                </div>';
+            }else if($multi == '1'){
+                echo '
+                <p>'.$row['question'].'</p>
+                </div>
+                <hr>
+                <!-- Choices -->
+                <p class="text-center">
+                <strong>Choices: </strong>
+                </p>
+                <div class="form-check mb-4">
+                <input class="form-check-input" name="a_choice" type="radio" id="radio-179" value="option1">
+                <label class="form-check-label" for="radio-179">Berner Turners</label>
+                </div>
+                <div class="form-check mb-4">
+                <input class="form-check-input" name="b_choice" type="radio" id="radio-279" value="'.$row['answer'].'">
+                <label class="form-check-label" for="radio-279">'.$row['answer'].'</label>
+                </div>
+                <div class="form-check mb-4">
+                <input class="form-check-input" name="c_choice" type="radio" id="radio-379" value="option3">
+                <label class="form-check-label" for="radio-379">Hakon Wium Lie and Bert Bos</label>
+                </div>
+                <div class="form-check mb-4">
+                <input class="form-check-input" name="d_choice" type="radio" id="radio-479" value="option4">
+                <label class="form-check-label" for="radio-479">Hakon Wium Lie and Berner Turners</label>
+                </div>
+                <div class="form-check mb-4">
+                <input class="form-check-input" name="e_choice" type="radio" id="radio-579" value="option5">
+                <label class="form-check-label" for="radio-579">Bert Bos and Berner Turners</label>
+                </div>
+                </div>';  
+            }else if($tOrf == '1'){
+                echo '<p>'.$row['question'].'</p>
+                </div>
+                <hr>
+                <!-- Choices -->
+                <p class="text-center">
+                <strong>Choices: </strong>
+                </p>
+                <div class="form-check mb-4">
+                <input class="form-check-input" name="a_choice" type="radio" id="radio-179" value="True">
+                <label class="form-check-label" for="radio-179">True</label>
+                </div>
+                <div class="form-check mb-4">
+                <input class="form-check-input" name="b_choice" type="radio" id="radio-279" value="False">
+                <label class="form-check-label" for="radio-279">False</label>
+                </div>
+                </div>';
+            }
+            else{
+                echo '<strong>Oh oh!, Something went wrong.</strong>';
+            }
+            $query_1 = "SELECT id FROM questions WHERE id < '".$_POST['id']."' ORDER BY id DESC LIMIT 1";
+            $result_1 = mysqli_query($connect, $query_1);
+            $data_1 = mysqli_fetch_assoc($result_1);
+            $query_2 = "SELECT id FROM questions WHERE id > '".$_POST['id']."' ORDER BY id ASC LIMIT 1";
+            $result_2 = mysqli_query($connect, $query_2);
+            $data_2 = mysqli_fetch_assoc($result_2);
+            $submitChecker = mysqli_num_rows($result_2);
+            echo '<div align="center">';
+            if ($submitChecker != 0){
+                echo '<button type="button" name="next" class="btn btn-primary waves-effect waves-light next" id="'.$data_2["id"].'">Next</button>';
+            }else{
+                echo '<button type="button" name="next" class="btn btn-primary waves-effect waves-light" data-dismiss="modal" ">Submit</button>';
+            }
+            echo '<button type="button" name="next" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</button>
+             </div>';
+        }
+
+        /** if(!empty($_POST)){
+            $ans1 = $_POST['ans1'];
+            $ans2 = $_POST['ans2'];
+            $ans3 = $_POST['ans3'];
+            $ans4 = $_POST['ans4'];
+            $ans5 = $_POST['ans5'];
+            $ans6 = $_POST['ans6'];
+            $ans7 = $_POST['ans7'];
+            $ans8 = $_POST['ans8'];
+            $ans9 = $_POST['ans9'];
+            $ans10 = $_POST['ans10'];
+            $ans11 = $_POST['ans11'];
+            $ans12 = $_POST['ans12'];
+            $ans13 = $_POST['ans13'];
+            $ans14 = $_POST['ans14'];
+            $ans15 = $_POST['ans15'];
+            $ans16 = $_POST['ans16'];
+            $ans17 = $_POST['ans17'];
+            $ans18 = $_POST['ans18'];
+            $ans19 = $_POST['ans19'];
+            $ans20 = $_POST['ans20'];
+            $ans21 = $_POST['ans21'];
+            $ans22 = $_POST['ans22'];
+            $ans23 = $_POST['ans23'];
+            $ans24 = $_POST['ans24'];
+            $ans25 = $_POST['ans25'];
+            $check = 0;
+
+            if ($ans1 == $row['answer']){
+                $check++;
+            } else {
+                
+            }       
+            if ($ans2 == $row['answer']){
+                $check++;
+            } else { 
+            
+            }
+            if ($ans3 == $row['answer']){
+                $check++;
+            } else { 
+                
+            }
+            if ($ans4 == $row['answer']){
+                $check++;
+            } else {
+                
+            }
+            if ($ans5 == $row['answer']){
+                $check++;
+            } else { 
+                
+            }
+            if ($ans6 == $row['answer']){
+                $check++;
+            } else {
+                
+            }
+            if ($ans7 == $row['answer']){
+                $check++;
+            } else { 
+                
+            }
+            if ($ans8 == $row['answer']){
+                $check++;
+            } else {
+                
+            }
+            if ($ans9 == $row['answer']){
+                $check++;
+            } else { 
+                
+            }
+            if ($ans10 == $row['answer']){
+                $check++;
+            } else {
+                
+            }
+            if ($ans11 == $row['answer']){
+                $check++;
+            } else { 
+                
+            }
+            if ($ans12 == $row['answer']){
+                $check++;
+            } else {
+                
+            }
+            if ($ans13 == $row['answer']){
+                $check++;
+            } else { 
+                
+            }
+            if ($ans14 == $row['answer']){
+                $check++;
+            } else {
+                
+            }
+            if ($ans15 == $row['answer']){
+                $check++;
+            } else { 
+                
+            }
+            if ($ans16 == $row['answer']){
+                $check++;
+            } else {
+                
+            }
+            if ($ans17 == $row['answer']){
+                $check++;
+            } else { 
+                
+            }
+            if ($ans18 == $row['answer']){
+                $check++;
+            } else {
+                
+            }
+            if ($ans19 == $row['answer']){
+                $check++;
+            } else { 
+                
+            }
+            if ($ans20 == $row['answer']){
+                $check++;
+            } else {
+                
+            }
+            if ($ans21 == $row['answer']){
+                $check++;
+            } else { 
+                
+            }
+            if ($ans22 == $row['answer']){
+                $check++;
+            } else {
+                
+            }
+            if ($ans23 == $row['answer']){
+                $check++;
+            } else { 
+                
+            }
+            if ($ans24 == $row['answer']){
+                $check++;
+            } else {
+                
+            }
+            if ($ans25 == $row['answer']){
+                $check++;
+            } else { 
+                
+            }
+
+            echo "<p> you got $check correct!";
+        } **/
+
+    }  
+}
+?>
